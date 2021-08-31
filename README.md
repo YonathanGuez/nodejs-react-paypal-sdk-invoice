@@ -19,8 +19,8 @@ I use also @react-pdf/renderer for generate an Invoice with the JSON that paypal
 ```
 PORT=4000
 HOST=http://localhost:3000
-CLIENT_ID=
-CLIENT_SECRET=
+CLIENT_ID=XXXXXXXXXXXXX
+CLIENT_SECRET=XXXXXXXXXXXXX
 ```
 
 7. Create .env in client :
