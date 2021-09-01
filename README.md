@@ -1,4 +1,6 @@
-# nodejs-react-paypal-sdk-invoice
+# Example How to Use API Paypal with 2 differents Library Nodejs
+
+## V1 paypal-rest-sdk:
 
 Example of use paypal-rest-sdk with server side in nodejs and client side in react , this project use Sandbox paypal and build an invoice after payment
 
@@ -43,3 +45,10 @@ yarn install:dev
 ```
 yarn start:dev
 ```
+
+## V2 @paypal/checkout-server-sdk:
+
+Example available here :
+https://github.com/YonathanGuez/nodejs-react-paypal-sdk-invoice/tree/V2-paypal/checkout-server-sdk
+
+
