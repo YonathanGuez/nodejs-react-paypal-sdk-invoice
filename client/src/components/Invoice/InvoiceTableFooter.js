@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
 
 const InvoiceTableFooter = ({ items }) => {
   const total = items
-    .map((item) => item.quantity * item.price)
+    .map((item) => item.quantity * item.unit_amount.value)
     .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
   return (
     <View style={styles.row}>

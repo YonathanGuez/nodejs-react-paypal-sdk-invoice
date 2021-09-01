@@ -44,7 +44,7 @@ const InvoiceTableRow = ({ items }) => {
     <View style={styles.row} key={item.sku.toString()}>
       <Text style={styles.description}>{item.description}</Text>
       <Text style={styles.qty}>{item.quantity}</Text>
-      <Text style={styles.rate}>{item.price}</Text>
+      <Text style={styles.rate}>{item.unit_amount.value}</Text>
       <Text style={styles.amount}>
         {(item.quantity * item.price).toFixed(2)}
       </Text>

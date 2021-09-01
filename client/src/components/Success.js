@@ -11,12 +11,12 @@ function ConvertJsonToInvoice(
   AddressCompany
 ) {
   let MyBalance =
-    test.payment.transactions[0].amount.total +
+    test.payment.purchase_units[0].amount.value +
     ' ' +
-    test.payment.transactions[0].amount.currency;
+    test.payment.purchase_units[0].amount.currency_code;
   let invoice = {
     id: test.payment.id,
-    invoice_no: test.payment.transactions[0].related_resources[0].sale.id,
+    invoice_no: test.payment.purchase_units[0].payments.captures[0].id,
     balance: MyBalance,
     company: MyCompany,
     email: EmailCompany,
@@ -24,21 +24,26 @@ function ConvertJsonToInvoice(
     address: AddressCompany,
     date: test.payment.create_time,
     due_date: test.payment.update_time,
-    items: test.payment.transactions[0].item_list.items,
+    items: test.payment.purchase_units[0].items,
   };
   return invoice;
 }
 
 const Success = () => {
   const [session, setSession] = useState({});
+  const [session2, setSession2] = useState({});
   const location = useLocation();
   const queryLocation = location.search;
   useEffect(() => {
     async function fetchSession() {
       const products = await fetch(
-        process.env.REACT_APP_URL1 + '/api/paypal/success' + queryLocation
+        process.env.REACT_APP_URL1 + '/api/paypalv2/success' + queryLocation
       ).then((res) => res.json());
       setSession(products);
+      const detail = await fetch(
+        process.env.REACT_APP_URL1 + '/api/paypalv2/getorder' + queryLocation
+      ).then((res) => res.json());
+      setSession2(detail);
     }
     fetchSession();
   }, [queryLocation]);
@@ -68,14 +73,14 @@ const Success = () => {
 
         <div className="sr-section completed-view">
           <div className="sr-callout">
-            {Object.keys(session).length === 0 ? (
+            {Object.keys(session2).length === 0 ? (
               <div></div>
             ) : (
               <PDFDownloadLink
                 document={
                   <Invoice
                     invoice={ConvertJsonToInvoice(
-                      session,
+                      session2,
                       'TestCompany',
                       'test@company.com',
                       '+0136666666',

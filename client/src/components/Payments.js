@@ -78,7 +78,7 @@ export const Payement = () => {
   };
 
   const handleSubmit = async (val) => {
-    const apiSetQrcode = process.env.REACT_APP_URL1 + '/api/paypal/payment';
+    const apiSetQrcode = process.env.REACT_APP_URL1 + '/api/paypalv2/payment';
     console.log(val);
     let value = val;
     try {

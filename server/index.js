@@ -37,7 +37,7 @@ app.disable('x-powered-by');
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/api/paypal', require('./router/api/paypal'));
+app.use('/api/paypalv2', require('./router/api/paypalv2'));
 app.listen(PORT, () => {
   console.log(`Server listening : ` + PORT);
 });
