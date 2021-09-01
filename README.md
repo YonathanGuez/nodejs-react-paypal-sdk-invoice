@@ -1,4 +1,4 @@
-# Example How to Use API Paypal with 2 differents Library Nodejs
+# Example How to Use PayPal Checkout API SDK for NodeJS V1 and V2
 
 ## V1 paypal-rest-sdk:
 
